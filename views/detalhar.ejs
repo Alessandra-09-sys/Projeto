@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include("partials/cabecalho.ejs", { title: "Detalhes do Aluno" }) %>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Detalhes do Aluno</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Matrícula:</strong> <%= aluno.matricula %></li>
+            <li class="list-group-item"><strong>Nome:</strong> <%= aluno.nome %></li>
+            <li class="list-group-item"><strong>Disciplina:</strong> <%= aluno.disciplina %></li>
+        </ul>
+        <a href="/alunos" class="btn btn-secondary mt-3">Voltar</a>
+    </div>
+</body>
+</html>

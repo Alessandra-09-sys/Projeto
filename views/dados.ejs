@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include("partials/cabecalho.ejs") %>
+    <title>Dados do Aluno</title>
+</head>
+<body>
+    <h1>Informações do Aluno</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Nome</th>
+                <th>Disciplina</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= pessoa.matricula %></td>
+                <td><%= pessoa.nome %></td>
+                <td><%= pessoa.disciplina %></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
