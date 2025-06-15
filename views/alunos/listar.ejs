@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <%- include("partials/cabecalho.ejs", { title: "Lista de Alunos Matriculados" }) %>
+    <%- include("../partials/cabecalho.ejs", { title: "Lista de Alunos Matriculados" }) %>
 </head>
 <body>
     <div class="container-fluid mt-4">
@@ -20,14 +20,24 @@
                         <tr>
                             <td><%= aluno.matricula %></td>
                             <td><%= aluno.nome %></td>
-                            <td><%= aluno.disciplina %></td>
+                            <td>
+                                <% if (Array.isArray(aluno.disciplina)) { %>
+                                    <% aluno.disciplina.forEach(function(d) { %>
+                                        <span class="badge bg-primary"><%= d.nome %></span><br>
+                                    <% }) %>
+                                <% } else if (aluno.disciplina) { %>
+                                    <span class="badge bg-primary"><%= aluno.disciplina.nome %></span>
+                                <% } else { %>
+                                    <em>Sem disciplina vinculada</em>
+                                <% } %>
+                            </td>
                             <td class="text-center">
                                 <a href="/alunos?acao=excluir&matricula=<%= aluno.matricula %>"
                                    class="btn btn-danger btn-sm"
                                    onclick="return confirm('Tem certeza que deseja excluir este aluno?')">Excluir</a>
                             </td>
                             <td class="text-center">
-                                <a href="/?matricula=<%= aluno.matricula %>" class="btn btn-warning btn-sm">Atualizar</a>
+                                <a href="/alunos/cadastrar/matricula=<%= aluno.matricula %>" class="btn btn-warning btn-sm">Atualizar</a>
                             </td>
                             <td class="text-center">
                                <a href="/alunos/<%= aluno._id %>" class="btn btn-info btn-sm">Detalhar</a>

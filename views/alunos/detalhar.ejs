@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <%- include("partials/cabecalho.ejs", { title: "Detalhes do Aluno" }) %>
+    <%- include("../partials/cabecalho.ejs", { title: "Detalhes do Aluno" }) %>
 </head>
 <body>
     <div class="container mt-4">
@@ -9,7 +9,17 @@
         <ul class="list-group">
             <li class="list-group-item"><strong>Matrícula:</strong> <%= aluno.matricula %></li>
             <li class="list-group-item"><strong>Nome:</strong> <%= aluno.nome %></li>
-            <li class="list-group-item"><strong>Disciplina:</strong> <%= aluno.disciplina %></li>
+            <li class="list-group-item"><strong>Disciplinas:</strong>
+                                <% if (Array.isArray(aluno.disciplina)) { %>
+                                    <% aluno.disciplina.forEach(function(d) { %>
+                                        <span class="badge bg-primary"><%= d.nome %></span><br>
+                                    <% }) %>
+                                <% } else if (aluno.disciplina) { %>
+                                    <span class="badge bg-primary"><%= aluno.disciplina.nome %></span>
+                                <% } else { %>
+                                    <em>Sem disciplina vinculada</em>
+                                <% } %>
+            </li>
         </ul>
         <a href="/alunos" class="btn btn-secondary mt-3">Voltar</a>
     </div>

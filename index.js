@@ -20,9 +20,13 @@ app.use(express.static('public'));
 // Rotas
 const alunoRoutes = require('./routes/alunoRoutes');
 const usuariosRoutes = require('./routes/usuariosRoutes');
+const disciplinaRoutes = require('./routes/disciplinaRoutes');
+// const matriculaRoutes = require('./routes/matriculasRoutes');
 
 app.use('/alunos', alunoRoutes);        // Prefixo /alunos
 app.use('/usuarios', usuariosRoutes);   // Prefixo /usuarios
+app.use('/disciplinas', disciplinaRoutes); // Prefixo /disciplinas
+// app.use('/matriculas', matriculaRoutes); // Prefixo /matriculas
 
 app.get('/', (req, res) => {
     res.render('index');

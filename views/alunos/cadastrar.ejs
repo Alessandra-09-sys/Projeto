@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <%- include("partials/cabecalho.ejs") %>
+    <%- include("../partials/cabecalho.ejs") %>
 </head>
 <body>
     <div class="container-fluid mt-4">
         <h1 class="mb-4">Cadastro de Aluno</h1>
         <form action="/alunos/cadastrar" method="POST">
-    <div class="mb-3">
-        <label for="matricula" class="form-label">Matrícula</label>
-        <input type="text" id="matricula" name="matricula" class="form-control" value="<%= aluno.matricula %>" readonly>
-    </div>
-    <div class="mb-3">
-        <label for="nome" class="form-label">Nome</label>
-        <input type="text" id="nome" name="nome" class="form-control" value="<%= aluno.nome %>">
-    </div>
-    <div class="mb-3">
-        <label for="disciplina" class="form-label">Disciplina</label>
-        <input type="text" id="disciplina" name="disciplina" class="form-control" value="<%= aluno.disciplina %>">
-    </div>
-    <button type="submit" class="btn btn-success">Salvar</button>
-</form>
+            <div class="mb-3">
+                <label for="matricula" class="form-label">Matrícula</label>
+                <input type="text" id="matricula" name="matricula" class="form-control" value="<%= aluno.matricula %>">
+            </div>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" id="nome" name="nome" class="form-control" value="<%= aluno.nome %>">
+            </div>
+            <div class="mb-3">
+                <select name="disciplina" class="form-control">
+                    <% disciplinas.forEach(function(disc) { %>
+                        <option value="<%= disc._id %>"><%= disc.nome %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </form>
 
     </div>
 

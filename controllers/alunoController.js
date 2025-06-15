@@ -1,5 +1,5 @@
-const bcryptjs = require("bcryptjs");
 const AlunoModel = require("../models/Aluno");
+const Disciplina = require('../models/Disciplina');
 
 class AlunoController {
 
@@ -7,11 +7,11 @@ class AlunoController {
     static async listar(req, res) {
         try {
             // Se houver query de exclusão
-            if (req.query.acao === 'excluir' && req.query.id) {
-                await AlunoModel.deleteOne({ _id: req.query.id });
+            if (req.query.acao === 'excluir' && req.query.matricula) {
+                await AlunoModel.deleteOne({ matricula: req.query.matricula });
             }
 
-            const alunos = await AlunoModel.find();
+            const alunos = await AlunoModel.find().populate('disciplina');
             res.render("alunos/listar", { alunos });
         } catch (error) {
             console.error("Erro ao listar alunos:", error);
@@ -22,7 +22,7 @@ class AlunoController {
     // Exibir detalhes de um aluno
     static async detalhar(req, res) {
         try {
-            const aluno = await AlunoModel.findById(req.params.id);
+            const aluno = await AlunoModel.findById(req.params.id).populate('disciplina');
             if (!aluno) {
                 return res.status(404).send("Aluno não encontrado");
             }
@@ -34,14 +34,15 @@ class AlunoController {
     }
 
     // Exibir formulário de cadastro de novo aluno
-    static cadastrarGet(req, res) {
-        res.render("alunos/cadastrar", { aluno: { nome: "", matricula: "", disciplina: "" } });
+    static async cadastrarGet(req, res) {
+        const disciplinas = await Disciplina.find();
+        res.render("alunos/cadastrar", { aluno: { nome: "", matricula: "", disciplina: "" }, disciplinas });
     }
 
     // Exibir formulário de atualização de aluno existente
     static async atualizar(req, res) {
         try {
-            const aluno = await AlunoModel.findById(req.params.id);
+            const aluno = await AlunoModel.findOne({ matricula: req.params.matricula });
             if (!aluno) {
                 return res.status(404).send("Aluno não encontrado");
             }

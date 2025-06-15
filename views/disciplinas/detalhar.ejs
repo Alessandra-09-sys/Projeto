@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include("../partials/cabecalho.ejs", { title: "Detalhes do Aluno" }) %>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Detalhes da Disciplina</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4>Nome: <%= disciplina.nome %></h4>
+                <p><strong>Código:</strong> <%= disciplina.codigo %></p>
+
+                <h5>Alunos Matriculados:</h5>
+                <ul>
+                    <% disciplina.Alunos.forEach(function(aluno) { %>
+                        <li><strong><%= aluno.nome %></strong> - Matrícula: <%= aluno.matricula %></li>
+                    <% }) %>
+                </ul>
+            </div>
+    </div>
+</body>
+</html>
