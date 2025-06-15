@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <%- include("partials/cabecalho.ejs", { title: "Lista de Usuarios" }) %>
+    <%- include("../partials/cabecalho.ejs", { title: "Lista de Usuarios" }) %>
 </head>
 <body>
     <div class="container-fluid mt-4">
@@ -25,12 +25,10 @@
                                    onclick="return confirm('Tem certeza que deseja excluir este usuario?')">Excluir</a>
                             </td>
                             <td class="text-center">
-                                <a href="/?matricula=<%= aluno.matricula %>&nome=<%= aluno.nome %>&disciplina=<%= aluno.disciplina %>"
-                                   class="btn btn-warning btn-sm">Atualizar</a>
+                                <a href="/usuarios/cadastrar/id=<%= usuario._id %>" class="btn btn-warning btn-sm">Atualizar</a>
                             </td>
                             <td class="text-center">
-                               <a href="/alunos/<%= aluno._id %>" class="btn btn-info btn-sm">Detalhar</a>
-
+                               <a href="/usuarios/<%= usuario._id %>" class="btn btn-info btn-sm">Detalhar</a>
                             </td>
                         </tr>
                     <% }; %>
@@ -38,7 +36,7 @@
             </tbody>
         </table>
         <div class="mt-4">
-            <a href="/" class="btn btn-primary me-2">Nova Matrícula</a>
+            <a href="/usuarios/cadastrar" class="btn btn-primary">Novo Usuário</a>
             <a href="/" class="btn btn-info">Voltar</a>
         </div>
     </div>

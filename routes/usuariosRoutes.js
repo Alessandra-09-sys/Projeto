@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const usuarioController = require('../controllers/usuarioController');
 
-router.get('/usuarios', usuarioController.listar);
-router.get('/detalharUsuario/:id', usuarioController.detalhar);
-router.get('/usuarios/cadastrar/:id', usuarioController.atualizar);
-router.get('/usuarios/cadastrar', usuarioController.cadastrarGet);
+router.get('/', usuarioController.listar);
+router.get('/:id', usuarioController.detalhar);
+router.get('/cadastrar', usuarioController.cadastrarGet);
+router.get('/cadastrar/:id', usuarioController.atualizar);
+router.post('/cadastrar', usuarioController.cadastrar);
 
 module.exports = router;

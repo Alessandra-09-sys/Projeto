@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include("../partials/cabecalho.ejs", { title: "Detalhes do Usuário" }) %>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Detalhes do Usuário</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>ID:</strong> <%= usuario._id %></li>
+            <li class="list-group-item"><strong>Nome:</strong> <%= usuario.nome %></li>
+            <li class="list-group-item"><strong>E-mail:</strong> <%= usuario.email %></li>
+        </ul>
+        <a href="/usuarios" class="btn btn-secondary mt-3">Voltar</a>
+    </div>
+</body>
+</html>

@@ -5,11 +5,11 @@
 </head>
 <body>
     <div class="container-fluid mt-4">
-        <h1 class="mb-4">Cadastro de Usuario</h1>
+        <h1 class="mb-4">Cadastro de Aluno</h1>
         <form action="/salvar" method="POST">
     <div class="mb-3">
-        <label for="matricula" class="form-label">E-mail</label>
-        <input type="text" id="email" name="email" class="form-control" value="<%= usuario.email %>" readonly>
+        <label for="matricula" class="form-label">Matrícula</label>
+        <input type="text" id="matricula" name="matricula" class="form-control" value="<%= pessoa.matricula %>" readonly>
     </div>
     <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
